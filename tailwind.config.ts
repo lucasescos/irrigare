@@ -51,11 +51,37 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        // Custom colors from IRRIGARE palette
+        'irrigare-green': '#2D4A3E',
+        'irrigare-beige': '#E8DCC4',
+        'irrigare-accent': '#B8956A',
+        'irrigare-bege': '#D4C4B0',
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        serif: ['Playfair Display', 'Georgia', 'serif'],
+        sans: ['Inter', 'Montserrat', 'Work Sans', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.6s ease-out',
+        'fade-in-up': 'fadeInUp 0.6s ease-out',
+        'fade-in-delay-1': 'fadeIn 0.6s ease-out 0.2s',
+        'fade-in-delay-2': 'fadeIn 0.6s ease-out 0.4s',
+        'fade-in-delay-3': 'fadeIn 0.6s ease-out 0.6s',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
     },
   },

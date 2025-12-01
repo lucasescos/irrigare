@@ -1,23 +1,34 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: {
+    default: "IRRIGARE - Sistemas de Irrigação Automatizada",
+    template: "%s | IRRIGARE"
+  },
+  description: "Suas plantas sempre perfeitas. Você sempre livre. Sistemas de irrigação automatizada e integrada para residências em Porto Alegre.",
+  keywords: ["irrigação", "automatizada", "plantas", "jardim", "porto alegre", "residencial", "sistema de rega"],
+  authors: [{ name: "IRRIGARE" }],
+  creator: "IRRIGARE",
+  metadataBase: new URL("https://irrigare.com.br"),
+  openGraph: {
+    title: "IRRIGARE - Sistemas de Irrigação Automatizada",
+    description: "Suas plantas sempre perfeitas. Você sempre livre. Sistemas de irrigação automatizada e integrada para residências em Porto Alegre.",
+    locale: "pt_BR",
+    type: "website",
+  },
 };
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  display: "swap",
-  subsets: ["latin"],
-});
 
 export default function RootLayout({
   children,
@@ -25,16 +36,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+    <html lang="pt-BR" className={`${inter.variable} ${playfairDisplay.variable}`}>
+      <body className="font-sans antialiased">
+        {children}
       </body>
     </html>
   );
